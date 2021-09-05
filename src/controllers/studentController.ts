@@ -33,4 +33,24 @@ export class StudentsController {
       return res.status(StatusCodes.NOT_FOUND).json(err)
     }
   }
+
+  async delete(req: Request, res: Response) {
+    const id = Number(req.params.id);
+
+    if (id) {
+      const student: Student = await StudentsDB.deleteStudent(id);
+
+      if (!student) {
+        return res.status(StatusCodes.NOT_FOUND).send();
+      }
+  
+      return res
+        .status(StatusCodes.OK)
+        .json({ message: "Student deletado com sucesso"}); 
+    }
+    else
+    {
+      return res.status(StatusCodes.BAD_REQUEST).send();
+    }
+  }
 }

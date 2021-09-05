@@ -37,6 +37,19 @@ function updateStudent(updatedStudent: Student)
   return Promise.reject({error:"student not found"});
 }
 
+const deleteStudent = (id: number): Promise<any> => {
+  const entity = students.find((student: Student) => student.id === id);
+
+  if (entity) {
+    const index: number = students.indexOf(entity);
+
+    students.splice(index, 1);
+
+    return Promise.resolve(entity);
+  }
+
+  return Promise.resolve(null);
+};
 
 /**
  * Returns student list
