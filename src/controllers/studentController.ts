@@ -18,8 +18,8 @@ export class StudentsController {
 
   async update(req: Request, res: Response) 
   {
-    const id:number = Number(req.params.id);
-    const student:Student = req.body
+    const id = Number(req.params.id);
+    const student = req.body
     student.id = id
     
     try
@@ -38,7 +38,7 @@ export class StudentsController {
     const id = Number(req.params.id);
 
     if (id) {
-      const student: Student = await StudentsDB.deleteStudent(id);
+      const student = await StudentsDB.deleteStudent(id);
 
       if (!student) {
         return res.status(StatusCodes.NOT_FOUND).send();
