@@ -37,7 +37,7 @@ function updateStudent(updatedStudent: Student)
   return Promise.reject({error:"student not found"});
 }
 
-const deleteStudent = (id: number): Promise<any> => {
+const deleteStudent = (id: number) => {
   const entity = students.find((student: Student) => student.id === id);
 
   if (entity) {
